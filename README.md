@@ -85,7 +85,7 @@ The conceptual database model currently contains 13 entities:
 ## 👥 Team Members
   Nguyễn Ngọc Toàn, làm report
   Nguyễn Anh Tuấn,  sửa văn bản
-  Nguyễn Chí Thanh. làm code
+  Nguyễn Chí Thanh. sửa văn bản
 
 ## 🎓 Course Information
 
