@@ -83,11 +83,9 @@ The conceptual database model currently contains 13 entities:
 | Testing | ⏳ Not Started |
 
 ## 👥 Team Members
-  Nguyễn Ngọc Toàn, 
-  Nguyễn Anh Tuấn,  
-  Nguyễn Chí Thanh.
-
-> Replace the student names and roles with the actual team information.
+  Nguyễn Ngọc Toàn, làm report
+  Nguyễn Anh Tuấn,  sửa văn bản
+  Nguyễn Chí Thanh. làm code
 
 ## 🎓 Course Information
 
