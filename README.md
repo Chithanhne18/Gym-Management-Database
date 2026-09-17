@@ -1,8 +1,8 @@
 # Gym Membership & Personal Training Planner
 
 > A database project for managing gym memberships, training schedules,
-> personal training sessions, bookings, payments, gym visits,
-> equipment, and maintenance activities.
+> Personal training sessions, bookings, payments, gym visits,
+> Equipment, and maintenance activities.
 
 ---
 
