@@ -6,8 +6,6 @@
 
 ---
 
-# 🇬🇧 English
-
 ## 📌 Project Overview
 
 This project is a database system designed to manage gym memberships,
@@ -85,9 +83,9 @@ The conceptual database model currently contains 13 entities:
 | Testing | ⏳ Not Started |
 
 ## 👥 Team Members
-  Nguyễn Ngọc Toàn
-  Nguyễn Anh Tuấn 
-  Nguyễn Chí Thanh
+  Nguyễn Ngọc Toàn, 
+  Nguyễn Anh Tuấn,  
+  Nguyễn Chí Thanh.
 
 > Replace the student names and roles with the actual team information.
 
