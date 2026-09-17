@@ -76,7 +76,7 @@ The conceptual database model currently contains 13 entities:
 | Business Rules | ✅ Completed |
 | Conceptual Model | ✅ Completed |
 | Data Dictionary | ✅ Completed |
-| ER Diagram | 🔄 In Progress |
+| ER Diagram |  ✅ Completed  |
 | Database Schema | ⏳ Not Started |
 | Sample Data | ⏳ Not Started |
 | SQL Queries | ⏳ Not Started |
