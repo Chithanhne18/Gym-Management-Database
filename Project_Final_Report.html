@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Báo Cáo Đồ Án Cơ Sở Dữ Liệu - INT1313_CLC</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm 18mm 18mm 20mm;
+        }
+        * {
+            color: #000000;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12pt;
+            line-height: 1.45;
+            color: #000000;
+            background-color: #ffffff;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .cover-page {
+            page-break-after: always;
+            padding-top: 10px;
+        }
+        .school-header {
+            text-align: center;
+            font-size: 12.5pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+        .school-sub {
+            text-align: center;
+            font-size: 12pt;
+            font-weight: normal;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .cover-divider {
+            width: 38%;
+            border: 0;
+            border-top: 1px solid #000000;
+            margin: 8px auto 36px auto;
+        }
+        .report-main-title {
+            text-align: center;
+            font-size: 18pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 20px 0 10px 0;
+        }
+        .report-topic-title {
+            text-align: center;
+            font-size: 13.5pt;
+            font-weight: bold;
+            margin: 8px 0 30px 0;
+        }
+        .meta-block {
+            margin: 16px 0 24px 0;
+            font-size: 12pt;
+            line-height: 1.6;
+        }
+        .meta-block p {
+            margin: 4px 0;
+        }
+        h1.phase-heading {
+            font-size: 14pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 4px;
+            margin: 18px 0 12px 0;
+            page-break-after: avoid;
+        }
+        h2 {
+            font-size: 12.5pt;
+            font-weight: bold;
+            margin: 14px 0 6px 0;
+            page-break-after: avoid;
+        }
+        h3 {
+            font-size: 11.5pt;
+            font-weight: bold;
+            margin: 10px 0 4px 0;
+            page-break-after: avoid;
+        }
+        p {
+            margin: 4px 0 8px 0;
+            text-align: justify;
+        }
+        ul, ol {
+            margin: 4px 0 10px 0;
+            padding-left: 22px;
+        }
+        li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 6px 0 14px 0;
+            font-size: 10pt;
+            table-layout: fixed;
+            page-break-inside: avoid;
+        }
+        tr {
+            page-break-inside: avoid;
+        }
+        th, td {
+            border: 1px solid #000000;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 5px 6px;
+            vertical-align: top;
+            text-align: left;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        th {
+            font-weight: bold;
+        }
+        .center {
+            text-align: center;
+        }
+        .dict-block {
+            page-break-inside: avoid;
+            margin-bottom: 10px;
+        }
+        .sql-ident {
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+        }
+        pre {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 10.5pt;
+            line-height: 1.4;
+            border: 1px solid #000000;
+            background-color: #ffffff;
+            padding: 8px 10px;
+            margin: 8px 0 12px 0;
+            white-space: pre-wrap;
+            page-break-inside: avoid;
+        }
+        .erd-container {
+            text-align: center;
+            margin: 10px 0 14px 0;
+            page-break-inside: avoid;
+        }
+        .erd-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #000000;
+        }
+        .erd-caption {
+            font-style: italic;
+            font-size: 10.5pt;
+            margin-top: 6px;
+            text-align: center;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        .nowrap {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TRANG BÌA -->
+    <div class="cover-page">
+        <div class="school-header">HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</div>
+        <div class="school-sub">CƠ SỞ TẠI THÀNH PHỐ HỒ CHÍ MINH</div>
+        <hr class="cover-divider">
+
+        <div class="report-main-title">BÁO CÁO ĐỒ ÁN CƠ SỞ DỮ LIỆU</div>
+        <div class="report-topic-title">Đề tài số 9: Hệ thống Quản lý Phòng tập Thể hình<br>Gym Membership &amp; Personal Training Planner</div>
+
+        <div class="meta-block">
+            <p><strong>Môn học:</strong> Cơ sở dữ liệu — Mã môn học: INT1313_CLC</p>
+            <p><strong>Nhóm lớp:</strong> INT1313_CLC_02 — Học kỳ 1, Năm học 2026–2027</p>
+            <p><strong>Giảng viên hướng dẫn:</strong> Thầy Lê Hà Thanh — Email: lehathanh@ptithcm.edu.vn</p>
+            <p><strong>Kho lưu trữ GitHub:</strong> https://github.com/Chithanhne18/Gym-Management-Database</p>
+            <p><strong>Hệ quản trị CSDL và Công nghệ:</strong> Microsoft SQL Server, SSMS, Python Flask và pyodbc</p>
+        </div>
+
+        <h2>Danh sách thành viên thực hiện và phân công nhiệm vụ</h2>
+        <table>
+            <tr>
+                <th style="width: 6%;" class="center">STT</th>
+                <th style="width: 35%;">Họ và tên và Email</th>
+                <th style="width: 15%;" class="center">MSSV</th>
+                <th style="width: 44%;">Nội dung đảm nhiệm</th>
+            </tr>
+            <tr>
+                <td class="center">1</td>
+                <td><strong>Trương Chí Thành</strong><br><span style="font-size: 9.2pt;">n23dcat064@student.ptithcm.edu.vn</span></td>
+                <td class="center">N23DCAT064</td>
+                <td>Nhóm trưởng; thực hiện thiết kế Phase 1 và Phase 2, chuẩn hóa DDL 13 bảng, xây dựng Triggers đặt chỗ và bảo trì, 2 Views, Stored Procedure check-in, 6 câu truy vấn phức tạp và tổng hợp báo cáo nộp bài.</td>
+            </tr>
+            <tr>
+                <td class="center">2</td>
+                <td><strong>Nguyễn Ngọc Toàn</strong><br><span style="font-size: 9.2pt;">n24dece097@student.ptithcm.edu.vn</span></td>
+                <td class="center">N24DECE097</td>
+                <td>Mở rộng và chuẩn hóa bộ dữ liệu 50 hội viên, soạn tài liệu nguồn dữ liệu, kiểm thử chất lượng toàn bộ mã nguồn SQL và ứng dụng, tổng hợp kho lưu trữ GitHub và chuẩn bị nội dung thuyết trình.</td>
+            </tr>
+            <tr>
+                <td class="center">3</td>
+                <td><strong>Nguyễn Anh Tuấn</strong><br><span style="font-size: 9.2pt;">n24dece102@student.ptithcm.edu.vn</span></td>
+                <td class="center">N24DECE102</td>
+                <td>Xây dựng Trigger chống trùng lịch huấn luyện viên và phòng tập, View kiểm tra chỗ trống, 5 nhóm truy vấn phức tạp, kịch bản kiểm thử Trigger và ứng dụng Web Python Flask kết nối SQL Server ở Phase 4.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- PHASE 1                                                               -->
+    <!-- ===================================================================== -->
+    <h1 class="phase-heading">GIAI ĐOẠN 1: THIẾT KẾ KHÁI NIỆM VÀ ĐẶC TẢ YÊU CẦU</h1>
+
+    <h2>1.1. Tuyên bố vấn đề và Đặc tả yêu cầu hệ thống</h2>
+    <p>Hệ thống Quản lý Phòng tập Thể hình được xây dựng nhằm thay thế quy trình quản lý thủ công bằng một cơ sở dữ liệu quan hệ tập trung, có khả năng kiểm soát chặt chẽ toàn vẹn dữ liệu ngay tại tầng CSDL. Cấu trúc đặc tả yêu cầu tuân theo chuẩn SRS ISO/IEC/IEEE 29148, bao gồm ba trụ cột nghiệp vụ chính:</p>
+    <ul>
+        <li><strong>Quản lý lịch trình tập luyện:</strong> Điều phối thời gian, phòng tập <strong>ROOM</strong>, huấn luyện viên <strong>TRAINER</strong> và bộ môn <strong>GYM_CLASS</strong> để tổ chức các ca dạy <strong>SESSION</strong> và tiếp nhận lượt đặt chỗ <strong>BOOKING</strong>, đồng thời ngăn chặn xung đột lịch.</li>
+        <li><strong>Quản lý thanh toán định kỳ:</strong> Theo dõi danh mục gói tập <strong>MEMBERSHIP_PLAN</strong>, hợp đồng theo thời hạn <strong>MEMBERSHIP</strong> và lịch sử hóa đơn thanh toán <strong>BILLING_LOG</strong> phát sinh theo hợp đồng.</li>
+        <li><strong>Quản lý thiết bị và bảo trì:</strong> Theo dõi vị trí đặt thiết bị <strong>EQUIPMENT</strong> tại các phòng tập và lưu lịch sử bảo trì <strong>MAINTENANCE_LOG</strong> theo thời gian; bản ghi chưa có ngày kết thúc thể hiện thiết bị đang hỏng và không khả dụng.</li>
+    </ul>
+    <p><strong>Yêu cầu chức năng:</strong> Hệ thống cho phép lưu trữ hồ sơ hội viên, quản lý thẻ quẹt vật lý, đăng ký và gia hạn hợp đồng gói tập, ghi nhận trạng thái thanh toán định kỳ, kiểm soát lượt quẹt thẻ vào cổng, xếp lịch ca lớp nhóm và ca huấn luyện cá nhân 1-kèm-1, đăng ký hoặc hủy đặt chỗ, báo hỏng và hoàn tất bảo trì thiết bị.</p>
+    <p><strong>Yêu cầu phi chức năng:</strong> Áp dụng quy tắc đặt tên chữ thường snake_case trên toàn bộ bảng và thuộc tính, đảm bảo toàn vẹn dữ liệu bằng ràng buộc khóa chính, khóa ngoại, CHECK, UNIQUE và Trigger ngay tại tầng SQL Server, tối ưu tốc độ truy vấn lịch trình và tra cứu hội viên bằng hệ thống chỉ mục Index.</p>
+
+    <h2>1.2. Xác định 13 thực thể của dự án</h2>
+    <table>
+        <tr>
+            <th style="width: 7%;" class="center">STT</th>
+            <th style="width: 24%;">Thực thể</th>
+            <th style="width: 69%;">Định nghĩa chi tiết</th>
+        </tr>
+        <tr><td class="center">1</td><td><strong>MEMBER</strong></td><td>Người đăng ký và sử dụng dịch vụ tại phòng tập; là thực thể trung tâm của toàn hệ thống.</td></tr>
+        <tr><td class="center">2</td><td><strong>MEMBERSHIP_CARD</strong></td><td>Phương tiện nhận diện vật lý dạng thẻ từ dùng để hội viên quẹt cổng ra vào.</td></tr>
+        <tr><td class="center">3</td><td><strong>MEMBERSHIP_PLAN</strong></td><td>Danh mục các gói dịch vụ niêm yết kèm mức giá cố định.</td></tr>
+        <tr><td class="center">4</td><td><strong>MEMBERSHIP</strong></td><td>Hợp đồng ghi nhận quyền truy cập của một hội viên khi mua một gói tập theo ngày bắt đầu và ngày kết thúc.</td></tr>
+        <tr><td class="center">5</td><td><strong>BILLING_LOG</strong></td><td>Lịch sử hóa đơn thanh toán định kỳ gắn với một hợp đồng gói tập.</td></tr>
+        <tr><td class="center">6</td><td><strong>GYM_VISIT</strong></td><td>Nhật ký lưu mốc thời gian chính xác mỗi khi cửa xoay ghi nhận thẻ hợp lệ.</td></tr>
+        <tr><td class="center">7</td><td><strong>GYM_CLASS</strong></td><td>Danh mục loại hình hoạt động tập nhóm như Yoga, Boxing, Zumba, HIIT và Pilates.</td></tr>
+        <tr><td class="center">8</td><td><strong>ROOM</strong></td><td>Không gian vật lý tổ chức lớp học và bố trí máy móc, có thuộc tính sức chứa tối đa để chặn đặt quá tải.</td></tr>
+        <tr><td class="center">9</td><td><strong>TRAINER</strong></td><td>Hồ sơ huấn luyện viên chịu trách nhiệm trực tiếp giảng dạy các ca tập.</td></tr>
+        <tr><td class="center">10</td><td><strong>SESSION</strong></td><td>Một buổi tập cụ thể đã xếp lịch gồm thông tin môn học hoặc ca cá nhân, phòng, huấn luyện viên và khung giờ.</td></tr>
+        <tr><td class="center">11</td><td><strong>BOOKING</strong></td><td>Phiếu ghi danh giữ chỗ của hội viên vào một ca tập cụ thể.</td></tr>
+        <tr><td class="center">12</td><td><strong>EQUIPMENT</strong></td><td>Máy móc hoặc dụng cụ được quản lý và định vị tại từng phòng tập.</td></tr>
+        <tr><td class="center">13</td><td><strong>MAINTENANCE_LOG</strong></td><td>Nhật ký lưu lịch sử các lần sửa chữa thiết bị; bản ghi chưa có ngày kết thúc nghĩa là máy đang hỏng.</td></tr>
+    </table>
+
+    <h2>1.3. Quy tắc nghiệp vụ</h2>
+    <ul>
+        <li><strong>BR_01:</strong> Một hội viên có thể có nhiều bản ghi <strong>MEMBERSHIP</strong> theo thời gian; mỗi <strong>MEMBERSHIP</strong> thuộc đúng một <strong>MEMBER</strong> và một <strong>MEMBERSHIP_PLAN</strong>.</li>
+        <li><strong>BR_02:</strong> Một <strong>MEMBERSHIP</strong> phải có ngày bắt đầu nhỏ hơn ngày kết thúc: start_date &lt; end_date.</li>
+        <li><strong>BR_03:</strong> Chỉ <strong>MEMBERSHIP</strong> đang có hiệu lực mới cho phép hội viên tạo <strong>BOOKING</strong> mới và check-in vào cửa.</li>
+        <li><strong>BR_04:</strong> Một <strong>MEMBERSHIP</strong> có thể phát sinh nhiều <strong>BILLING_LOG</strong> định kỳ.</li>
+        <li><strong>BR_05:</strong> Mỗi ca tập nhóm phải tham chiếu một <strong>GYM_CLASS</strong>; ca huấn luyện cá nhân 1-kèm-1 không tham chiếu lớp học và có class_id IS NULL.</li>
+        <li><strong>BR_06:</strong> Một <strong>SESSION</strong> phải có thời gian kết thúc lớn hơn thời gian bắt đầu: end_time &gt; start_time.</li>
+        <li><strong>BR_07:</strong> Một <strong>TRAINER</strong> không được phụ trách hai <strong>SESSION</strong> có khoảng thời gian chồng lấn nhau.</li>
+        <li><strong>BR_08:</strong> Một <strong>ROOM</strong> không được chứa hai <strong>SESSION</strong> có khoảng thời gian chồng lấn nhau.</li>
+        <li><strong>BR_09:</strong> Giữa hai <strong>SESSION</strong> liên tiếp của cùng một <strong>TRAINER</strong> phải có ít nhất 15 phút nghỉ đệm.</li>
+        <li><strong>BR_10:</strong> Một ca tập nhóm không được có số <strong>BOOKING</strong> ở trạng thái CONFIRMED vượt quá sức chứa capacity của <strong>ROOM</strong>.</li>
+        <li><strong>BR_11:</strong> Một ca huấn luyện cá nhân 1-kèm-1 chỉ được có tối đa một <strong>BOOKING</strong> hợp lệ.</li>
+        <li><strong>BR_12:</strong> Một hội viên không được có hai <strong>BOOKING</strong> cho cùng một <strong>SESSION</strong> thông qua ràng buộc UNIQUE(session_id, member_id).</li>
+        <li><strong>BR_13:</strong> Thẻ vật lý ở trạng thái BLOCKED hoặc INACTIVE không được dùng để check-in.</li>
+        <li><strong>BR_14:</strong> Khi <strong>MEMBERSHIP</strong> hết hạn, quyền check-in và tạo <strong>BOOKING</strong> bị khóa dựa trên hợp đồng chứ không dựa trên thẻ cứng.</li>
+        <li><strong>BR_15:</strong> Khi thanh toán tự động thất bại, chính sách ân hạn 3 ngày ở trạng thái PENDING được áp dụng trước khi khóa quyền truy cập.</li>
+        <li><strong>BR_16:</strong> Thiết bị có bản ghi <strong>MAINTENANCE_LOG</strong> chưa kết thúc với end_date IS NULL được coi là không khả dụng và cấm sử dụng.</li>
+        <li><strong>BR_17:</strong> Mỗi <strong>EQUIPMENT</strong> chỉ thuộc về một <strong>ROOM</strong> tại một thời điểm.</li>
+    </ul>
+
+    <h2>1.4. Sơ đồ thực thể kết hợp ERD chuẩn IE Crow's Foot</h2>
+    <div class="erd-container">
+        <img src="erd_diagram.jpg" alt="Sơ đồ ERD 13 bảng Hệ thống Quản lý Phòng tập Thể hình">
+        <div class="erd-caption">Hình 1.1: Sơ đồ ERD 13 thực thể chuẩn IE Crow's Foot với toàn bộ liên kết đã chuẩn hóa về quan hệ 1:N.</div>
+    </div>
+
+    <h2>1.5. Từ điển dữ liệu theo chuẩn ISO/IEC 11179</h2>
+    <p>Lược đồ vật lý gồm 13 bảng độc lập được mô tả chi tiết dưới đây.</p>
+
+    <div class="dict-block">
+        <h3>1.5.1. Bảng member</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>member_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã định danh duy nhất của hội viên</td></tr>
+            <tr><td>full_name</td><td>NVARCHAR(100)</td><td>None</td><td>No</td><td>None</td><td>Họ tên đầy đủ của hội viên</td></tr>
+            <tr><td>email</td><td>VARCHAR(100)</td><td>UQ</td><td>No</td><td>None</td><td>UNIQUE, chống tạo tài khoản trùng lặp</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.2. Bảng membership_card</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>card_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1001,1)</td><td>Mã định danh thẻ quẹt vật lý</td></tr>
+            <tr><td>member_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu member(member_id)</td></tr>
+            <tr><td>status</td><td>VARCHAR(20)</td><td>None</td><td>No</td><td>'ACTIVE'</td><td>CHECK IN ('ACTIVE', 'BLOCKED', 'INACTIVE')</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.3. Bảng membership_plan</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>plan_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã danh mục gói tập</td></tr>
+            <tr><td>name</td><td>NVARCHAR(100)</td><td>None</td><td>No</td><td>None</td><td>Tên gói dịch vụ niêm yết</td></tr>
+            <tr><td>price</td><td>DECIMAL(10,2)</td><td>None</td><td>No</td><td>0.00</td><td>CHECK (price &gt;= 0)</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.4. Bảng membership</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>membership_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã hợp đồng gói tập</td></tr>
+            <tr><td>member_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu member(member_id)</td></tr>
+            <tr><td>plan_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu membership_plan(plan_id)</td></tr>
+            <tr><td>start_date</td><td>DATETIME</td><td>None</td><td>No</td><td>None</td><td>Ngày kích hoạt hợp đồng</td></tr>
+            <tr><td>end_date</td><td>DATETIME</td><td>None</td><td>No</td><td>None</td><td>CHECK (end_date &gt; start_date)</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.5. Bảng billing_log</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>billing_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã hóa đơn thanh toán định kỳ</td></tr>
+            <tr><td>membership_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu membership(membership_id)</td></tr>
+            <tr><td>amount</td><td>DECIMAL(10,2)</td><td>None</td><td>No</td><td>0.00</td><td>CHECK (amount &gt;= 0)</td></tr>
+            <tr><td>payment_status</td><td>VARCHAR(20)</td><td>None</td><td>No</td><td>'PENDING'</td><td>CHECK IN ('SUCCESS', 'PENDING', 'FAILED')</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.6. Bảng gym_visit</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>visit_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã lượt quẹt thẻ vào cổng</td></tr>
+            <tr><td>member_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu member(member_id)</td></tr>
+            <tr><td>check_in_time</td><td>DATETIME</td><td>None</td><td>No</td><td>GETDATE()</td><td>Thời điểm check-in vào phòng tập</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.7. Bảng trainer</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>trainer_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã định danh huấn luyện viên</td></tr>
+            <tr><td>full_name</td><td>NVARCHAR(100)</td><td>None</td><td>No</td><td>None</td><td>Họ tên huấn luyện viên</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.8. Bảng room</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>room_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã phòng tập</td></tr>
+            <tr><td>capacity</td><td>INT</td><td>None</td><td>No</td><td>None</td><td>CHECK (capacity &gt; 0)</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.9. Bảng gym_class</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>class_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã bộ môn tập nhóm</td></tr>
+            <tr><td>class_name</td><td>NVARCHAR(100)</td><td>None</td><td>No</td><td>None</td><td>Tên bộ môn như Yoga hoặc Boxing</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.10. Bảng session</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>session_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã ca dạy thực tế</td></tr>
+            <tr><td>class_id</td><td>INT</td><td>FK</td><td>Yes</td><td>NULL</td><td>Ref gym_class(class_id); NULL là ca PT 1-kèm-1</td></tr>
+            <tr><td>room_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu room(room_id)</td></tr>
+            <tr><td>trainer_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu trainer(trainer_id)</td></tr>
+            <tr><td>start_time</td><td>DATETIME</td><td>None</td><td>No</td><td>None</td><td>Thời gian bắt đầu ca dạy</td></tr>
+            <tr><td>end_time</td><td>DATETIME</td><td>None</td><td>No</td><td>None</td><td>CHECK (end_time &gt; start_time)</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.11. Bảng booking</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>booking_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã lượt đặt chỗ</td></tr>
+            <tr><td>session_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu session(session_id)</td></tr>
+            <tr><td>member_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu member(member_id)</td></tr>
+            <tr><td>status</td><td>VARCHAR(20)</td><td>None</td><td>No</td><td>'CONFIRMED'</td><td>UQ(session_id, member_id); IN ('CONFIRMED', 'CANCELLED')</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.12. Bảng equipment</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>equipment_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã định danh thiết bị</td></tr>
+            <tr><td>room_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu room(room_id)</td></tr>
+            <tr><td>name</td><td>NVARCHAR(100)</td><td>None</td><td>No</td><td>None</td><td>Tên máy móc hoặc dụng cụ tập</td></tr>
+        </table>
+    </div>
+
+    <div class="dict-block">
+        <h3>1.5.13. Bảng maintenance_log</h3>
+        <table>
+            <tr>
+                <th style="width: 18%;">Attribute Name</th>
+                <th style="width: 19%;">Data Type</th>
+                <th style="width: 7%;">Key</th>
+                <th style="width: 8%;">Null?</th>
+                <th style="width: 18%;">Default Value</th>
+                <th style="width: 30%;">Business Rules / Constraints</th>
+            </tr>
+            <tr><td>log_id</td><td>INT</td><td>PK</td><td>No</td><td>IDENTITY(1,1)</td><td>Mã phiếu bảo trì thiết bị</td></tr>
+            <tr><td>equipment_id</td><td>INT</td><td>FK</td><td>No</td><td>None</td><td>Tham chiếu equipment(equipment_id)</td></tr>
+            <tr><td>start_date</td><td>DATETIME</td><td>None</td><td>No</td><td>None</td><td>Ngày bắt đầu sửa chữa</td></tr>
+            <tr><td>end_date</td><td>DATETIME</td><td>None</td><td>Yes</td><td>NULL</td><td>NULL nghĩa là đang hỏng; CHECK &gt;= start_date</td></tr>
+        </table>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- PHASE 2                                                               -->
+    <!-- ===================================================================== -->
+    <div class="page-break"></div>
+    <h1 class="phase-heading">GIAI ĐOẠN 2: THIẾT KẾ LOGIC VÀ CHUẨN HÓA DỮ LIỆU</h1>
+
+    <h2>2.1. Ánh xạ lược đồ quan hệ theo quy tắc Elmasri và Navathe</h2>
+    <p>Quá trình chuyển đổi từ sơ đồ ER sang lược đồ quan hệ tuân thủ thuật toán ánh xạ 7 bước chuẩn của giáo trình Fundamentals of Database Systems. Thuộc tính gạch chân là Khóa chính và thuộc tính in nghiêng là Khóa ngoại.</p>
+
+    <p><strong>Bước 1 — Ánh xạ 5 thực thể mạnh:</strong></p>
+    <ul>
+        <li>MEMBER(<u>member_id</u>, full_name, email)</li>
+        <li>MEMBERSHIP_PLAN(<u>plan_id</u>, name, price)</li>
+        <li>TRAINER(<u>trainer_id</u>, full_name)</li>
+        <li>ROOM(<u>room_id</u>, capacity)</li>
+        <li>GYM_CLASS(<u>class_id</u>, class_name)</li>
+    </ul>
+
+    <p><strong>Bước 4 và Bước 5 — Ánh xạ các quan hệ 1:N và triệt tiêu quan hệ M:N:</strong></p>
+    <ul>
+        <li>MEMBERSHIP_CARD(<u>card_id</u>, <em>member_id</em>, status)</li>
+        <li>GYM_VISIT(<u>visit_id</u>, <em>member_id</em>, check_in_time)</li>
+        <li>MEMBERSHIP(<u>membership_id</u>, <em>member_id</em>, <em>plan_id</em>, start_date, end_date)</li>
+        <li>BILLING_LOG(<u>billing_id</u>, <em>membership_id</em>, amount, payment_status)</li>
+        <li>EQUIPMENT(<u>equipment_id</u>, <em>room_id</em>, name)</li>
+        <li>MAINTENANCE_LOG(<u>log_id</u>, <em>equipment_id</em>, start_date, end_date)</li>
+        <li>SESSION(<u>session_id</u>, <em>class_id</em>, <em>room_id</em>, <em>trainer_id</em>, start_time, end_time)</li>
+        <li>BOOKING(<u>booking_id</u>, <em>session_id</em>, <em>member_id</em>, status)</li>
+    </ul>
+
+    <h2>2.2. Định nghĩa 12 khóa ngoại và hành vi toàn vẹn tham chiếu</h2>
+    <table>
+        <tr>
+            <th style="width: 26%;">Tên ràng buộc FK</th>
+            <th style="width: 30%;">Cột khóa ngoại</th>
+            <th style="width: 26%;">Cột tham chiếu</th>
+            <th style="width: 18%;">Hành vi ON DELETE</th>
+        </tr>
+        <tr><td>fk_card_member</td><td>membership_card.member_id</td><td>member.member_id</td><td>CASCADE</td></tr>
+        <tr><td>fk_visit_member</td><td>gym_visit.member_id</td><td>member.member_id</td><td>CASCADE</td></tr>
+        <tr><td>fk_membership_member</td><td>membership.member_id</td><td>member.member_id</td><td>CASCADE</td></tr>
+        <tr><td>fk_membership_plan</td><td>membership.plan_id</td><td>membership_plan.plan_id</td><td>NO ACTION</td></tr>
+        <tr><td>fk_billing_membership</td><td>billing_log.membership_id</td><td>membership.membership_id</td><td>CASCADE</td></tr>
+        <tr><td>fk_equipment_room</td><td>equipment.room_id</td><td>room.room_id</td><td>NO ACTION</td></tr>
+        <tr><td>fk_log_equipment</td><td>maintenance_log.equipment_id</td><td>equipment.equipment_id</td><td>CASCADE</td></tr>
+        <tr><td>fk_session_class</td><td>session.class_id</td><td>gym_class.class_id</td><td>SET NULL</td></tr>
+        <tr><td>fk_session_room</td><td>session.room_id</td><td>room.room_id</td><td>NO ACTION</td></tr>
+        <tr><td>fk_session_trainer</td><td>session.trainer_id</td><td>trainer.trainer_id</td><td>NO ACTION</td></tr>
+        <tr><td>fk_booking_session</td><td>booking.session_id</td><td>session.session_id</td><td>CASCADE</td></tr>
+        <tr><td>fk_booking_member</td><td>booking.member_id</td><td>member.member_id</td><td>NO ACTION</td></tr>
+    </table>
+    <p><em>Ghi chú kỹ thuật:</em> Ràng buộc fk_booking_member dùng NO ACTION trên SQL Server để tránh lỗi xung đột đa đường cascade khi xóa hội viên thông qua đồng thời hai nhánh booking và session.</p>
+
+    <h2>2.3. Chứng minh chuẩn hóa toán học từ 1NF đến BCNF</h2>
+
+    <h3>2.3.1. Phân tích chuẩn hóa bảng MEMBER</h3>
+    <ul>
+        <li><strong>Lược đồ:</strong> MEMBER(member_id, full_name, email)</li>
+        <li><strong>Tập phụ thuộc hàm:</strong> F = { member_id &rarr; full_name, email ; email &rarr; member_id, full_name }</li>
+        <li><strong>Khóa dự tuyển:</strong> {member_id} và {email}. Khóa chính được chọn là {member_id}.</li>
+        <li><strong>Chứng minh 1NF:</strong> Mọi thuộc tính đều chứa giá trị đơn nguyên tử, đạt 1NF.</li>
+        <li><strong>Chứng minh 2NF:</strong> Khóa dự tuyển đều là khóa đơn gồm một thuộc tính nên không thể tồn tại phụ thuộc hàm một phần, đạt 2NF.</li>
+        <li><strong>Chứng minh 3NF:</strong> Không tồn tại phụ thuộc hàm giữa hai thuộc tính không khóa, triệt tiêu phụ thuộc bắc cầu, đạt 3NF.</li>
+        <li><strong>Chứng minh BCNF:</strong> Vế trái của toàn bộ phụ thuộc hàm là member_id và email đều là khóa dự tuyển hay siêu khóa, nên lược đồ đạt <strong>BCNF</strong>.</li>
+    </ul>
+
+    <h3>2.3.2. Phân tích chuẩn hóa bảng BOOKING</h3>
+    <ul>
+        <li><strong>Lược đồ:</strong> BOOKING(booking_id, session_id, member_id, status)</li>
+        <li><strong>Tập phụ thuộc hàm:</strong> F = { booking_id &rarr; session_id, member_id, status ; {session_id, member_id} &rarr; booking_id, status } theo quy tắc BR_12.</li>
+        <li><strong>Khóa dự tuyển:</strong> {booking_id} và khóa ghép {session_id, member_id}.</li>
+        <li><strong>Chứng minh 1NF và 2NF:</strong> Giá trị đều nguyên tố; thuộc tính không khóa status phụ thuộc hàm đầy đủ vào {booking_id} và phụ thuộc hàm đầy đủ vào tập {session_id, member_id}, không có phụ thuộc một phần, đạt 2NF.</li>
+        <li><strong>Chứng minh 3NF và BCNF:</strong> Thuộc tính không khóa status không suy ra bất kỳ thuộc tính nào khác nên đạt 3NF; vế trái của mọi phụ thuộc hàm đều là khóa dự tuyển nên đạt <strong>BCNF</strong>.</li>
+    </ul>
+
+    <h3>2.3.3. Phân tích chuẩn hóa bảng SESSION</h3>
+    <ul>
+        <li><strong>Lược đồ:</strong> SESSION(session_id, class_id, room_id, trainer_id, start_time, end_time)</li>
+        <li><strong>Tập phụ thuộc hàm:</strong> F = { session_id &rarr; class_id, room_id, trainer_id, start_time, end_time }</li>
+        <li><strong>Khóa dự tuyển:</strong> {session_id}.</li>
+        <li><strong>Chứng minh 1NF đến BCNF:</strong> Mọi thuộc tính đều nguyên tố đạt 1NF; khóa chính là khóa đơn nên đạt 2NF; các khóa ngoại class_id, room_id và trainer_id độc lập nhau nên không có phụ thuộc bắc cầu đạt 3NF; vế trái duy nhất là session_id đóng vai trò siêu khóa nên đạt <strong>BCNF</strong>.</li>
+    </ul>
+
+    <h3>2.3.4. Phân tích chuẩn hóa đồng thời 10 bảng còn lại</h3>
+    <p>Các bảng MEMBERSHIP_CARD, MEMBERSHIP_PLAN, MEMBERSHIP, BILLING_LOG, GYM_VISIT, TRAINER, ROOM, GYM_CLASS, EQUIPMENT và MAINTENANCE_LOG đều sử dụng mã định danh nhân tạo đơn làm khóa chính, có dạng phụ thuộc hàm duy nhất F = { id &rarr; tất cả các thuộc tính còn lại }. Các thuộc tính đều đơn nguyên tố nên đạt 1NF; khóa chính là khóa đơn nên không tồn tại phụ thuộc một phần đạt 2NF; trong từng bảng không có hai thuộc tính không khóa nào phụ thuộc lẫn nhau nên đạt 3NF; vế trái của mọi phụ thuộc hàm luôn là khóa chính nên toàn bộ 13 bảng đều đạt <strong>BCNF</strong>.</p>
+
+    <!-- ===================================================================== -->
+    <!-- PHASE 3                                                               -->
+    <!-- ===================================================================== -->
+    <div class="page-break"></div>
+    <h1 class="phase-heading">GIAI ĐOẠN 3: TRIỂN KHAI CƠ SỞ DỮ LIỆU, DATASET VÀ TRUY VẤN</h1>
+
+    <h2>3.1. Tập lệnh DDL và hệ thống chỉ mục tối ưu</h2>
+    <p>Mã nguồn DDL được triển khai trong tệp <strong>sql/01_schema_ddl.sql</strong> trên Microsoft SQL Server theo chuẩn viết mã Google SQL Style Guide: tên bảng và tên cột viết thường kiểu snake_case, từ khóa SQL viết hoa toàn bộ. Hệ thống cài đặt đầy đủ ràng buộc toàn vẹn gồm Khóa chính, Khóa ngoại, UNIQUE, CHECK và <strong>7 chỉ mục Index</strong> tối ưu hóa hiệu năng:</p>
+    <ul>
+        <li><strong>idx_member_email</strong> trên member(email): tăng tốc tra cứu email hội viên khi kiểm tra đăng ký.</li>
+        <li><strong>idx_membership_dates</strong> trên membership(member_id, start_date, end_date): tối ưu kiểm tra hợp đồng còn hạn khi quẹt thẻ hoặc đặt chỗ.</li>
+        <li><strong>idx_session_timerange</strong>, <strong>idx_session_trainer</strong> và <strong>idx_session_room</strong> trên bảng session: tăng tốc kiểm tra chồng lấn khung giờ và thời gian nghỉ đệm 15 phút của huấn luyện viên.</li>
+        <li><strong>idx_booking_session</strong> trên booking(session_id, status): tối ưu đếm nhanh số lượng lượt đặt CONFIRMED theo từng ca dạy.</li>
+        <li><strong>idx_maintenance_active</strong> trên maintenance_log(equipment_id, end_date): lọc nhanh danh sách thiết bị đang bảo trì có end_date IS NULL.</li>
+    </ul>
+
+    <h2>3.2. Bộ dữ liệu mẫu DML và đặc tả nguồn dữ liệu</h2>
+    <p>Theo tài liệu <strong>data/DATA_SOURCE.md</strong> và tệp <strong>data/seed_data.sql</strong>, toàn bộ dữ liệu của đồ án là <strong>dữ liệu tổng hợp mô phỏng</strong> do nhóm tự thiết kế phục vụ triển khai và kiểm thử, không sử dụng dữ liệu cá nhân thật của khách hàng và không mạo nhận lấy từ nguồn bên ngoài. Dữ liệu thời gian được neo theo hàm GETDATE() và tích hợp khối kiểm tra toàn vẹn khóa ngoại tự động ở cuối script:</p>
+    <table>
+        <tr>
+            <th style="width: 24%;">Bảng dữ liệu</th>
+            <th style="width: 14%;" class="center">Số bản ghi</th>
+            <th style="width: 62%;">Đặc điểm dữ liệu và tình huống kiểm thử</th>
+        </tr>
+        <tr><td>member</td><td class="center">50</td><td>12 hội viên nền kèm các tình huống biên và 38 hội viên mở rộng với miền email .example.</td></tr>
+        <tr><td>membership_card</td><td class="center">50</td><td>Bao gồm các thẻ ACTIVE, 3 thẻ BLOCKED và 1 thẻ INACTIVE để kiểm thử BR_13.</td></tr>
+        <tr><td>membership_plan</td><td class="center">4</td><td>Gồm 4 gói: Cơ bản 500.000, Tiêu chuẩn 1.350.000, VIP kèm PT 2.500.000 và Diamond 8.000.000.</td></tr>
+        <tr><td>membership</td><td class="center">51</td><td>Gồm hợp đồng còn hạn dài, 3 hợp đồng sắp hết hạn trong 2–6 ngày, 2 hợp đồng hết hạn và lịch sử gia hạn.</td></tr>
+        <tr><td>billing_log</td><td class="center">52</td><td>Phân bổ đầy đủ 3 trạng thái thanh toán SUCCESS, PENDING và FAILED.</td></tr>
+        <tr><td>gym_visit</td><td class="center">102</td><td>17 lượt quẹt thẻ gốc và 85 lượt mô phỏng trong 28 ngày gần nhất; giữ 2 hội viên chưa từng check-in.</td></tr>
+        <tr><td>room, gym_class, trainer</td><td class="center">5 / 5 / 5</td><td>Có phòng 104 sức chứa 2 người để test đầy chỗ, phòng 103 cho PT 1-kèm-1, phòng 105 và HLV 5 để trống.</td></tr>
+        <tr><td>equipment, maintenance_log</td><td class="center">10 / 6</td><td>10 thiết bị tại 5 phòng; có thiết bị đã sửa xong và 2 thiết bị đang hỏng có end_date IS NULL.</td></tr>
+        <tr><td>session, booking</td><td class="center">10 / 17</td><td>8 ca nhóm và 2 ca PT 1-kèm-1 không trùng lịch; 17 lượt đặt gồm CONFIRMED và CANCELLED.</td></tr>
+    </table>
+
+    <h2>3.3. Thiết kế Triggers, Views và Stored Procedure</h2>
+    <table>
+        <tr>
+            <th style="width: 37%;">Tên đối tượng</th>
+            <th style="width: 19%;">Loại và Bảng</th>
+            <th style="width: 44%;">Cơ chế xử lý và Quy tắc nghiệp vụ đảm bảo</th>
+        </tr>
+        <tr>
+            <td><strong>trg_prevent_schedule_conflict</strong></td>
+            <td>Trigger AFTER INSERT, UPDATE trên session</td>
+            <td>Kiểm tra tập hợp inserted kể cả thao tác nhiều dòng: chặn trùng lịch huấn luyện viên theo BR_07, chặn trùng lịch phòng tập theo BR_08 và bắt buộc nghỉ đệm tối thiểu 15 phút giữa hai ca liên tiếp theo BR_09.</td>
+        </tr>
+        <tr>
+            <td><strong>trg_check_booking_eligibility</strong></td>
+            <td>Trigger AFTER INSERT, UPDATE trên booking</td>
+            <td>Chặn đặt chỗ CONFIRMED nếu hội viên chưa có hợp đồng còn hạn theo BR_03 và BR_14, chặn ca PT 1-kèm-1 vượt quá 1 học viên theo BR_11 và chặn lớp nhóm vượt quá sức chứa phòng theo BR_10.</td>
+        </tr>
+        <tr>
+            <td><strong>trg_prevent_duplicate_open_maintenance</strong></td>
+            <td>Trigger AFTER INSERT, UPDATE trên maintenance_log</td>
+            <td>Ngăn mở hai phiếu bảo trì cùng có end_date IS NULL cho cùng một thiết bị theo quy tắc BR_16.</td>
+        </tr>
+        <tr>
+            <td><strong>sp_check_in_gym</strong></td>
+            <td>Stored Procedure</td>
+            <td>Xác thực trạng thái thẻ theo BR_13 và hiệu lực hợp đồng theo BR_14 trước khi chèn bản ghi check-in vào bảng gym_visit.</td>
+        </tr>
+        <tr>
+            <td><strong>vw_session_availability</strong></td>
+            <td>View</td>
+            <td>Tổng hợp lịch học, tên môn học hoặc PT 1-kèm-1, huấn luyện viên, phòng, số chỗ CONFIRMED và số chỗ còn trống.</td>
+        </tr>
+        <tr>
+            <td><strong>vw_member_billing_overview</strong></td>
+            <td>View</td>
+            <td>Tổng hợp thông tin hội viên, trạng thái thẻ, hợp đồng gần nhất, tình trạng hiệu lực và tổng tiền theo từng trạng thái thanh toán.</td>
+        </tr>
+        <tr>
+            <td><strong>vw_equipment_maintenance_status</strong></td>
+            <td>View</td>
+            <td>Tổng hợp thiết bị theo từng phòng, tổng số lần bảo trì và trạng thái khả dụng hiện tại.</td>
+        </tr>
+    </table>
+
+    <h2>3.4. Tổng hợp 11 truy vấn phức tạp và kịch bản kiểm thử Trigger</h2>
+    <p>Hệ thống triển khai <strong>11 nhóm truy vấn phức tạp</strong> kết hợp đầy đủ các kỹ thuật JOIN nhiều bảng, CTE, hàm xếp hạng DENSE_RANK, gom nhóm GROUP BY, lọc HAVING, EXISTS/NOT EXISTS và Subquery tương quan:</p>
+    <ol>
+        <li>Lịch trình chi tiết toàn phòng tập trong tuần hiện tại, nối 4 bảng và xử lý COALESCE cho ca PT 1-kèm-1.</li>
+        <li>Thống kê các ca dạy nhóm có tỷ lệ lấp đầy từ 80% sức chứa phòng trở lên bằng GROUP BY và HAVING.</li>
+        <li>Xếp hạng top huấn luyện viên theo tổng số giờ giảng dạy và tổng lượt học viên đặt chỗ trong tháng bằng 2 CTE tách biệt và DENSE_RANK.</li>
+        <li>Truy vấn hai chiều tìm phòng tập và huấn luyện viên còn trống lịch trong cùng khung giờ bằng NOT EXISTS.</li>
+        <li>Đối chiếu số thiết bị, tổng số lần bảo trì, số máy đang hỏng, tổng giờ bảo trì và cường độ sử dụng theo từng phòng tập bằng 3 CTE.</li>
+        <li>Thống kê doanh thu thực thu SUCCESS, tiền chờ ân hạn PENDING và tiền thất bại FAILED theo từng gói tập membership_plan.</li>
+        <li>Lọc danh sách hội viên có hợp đồng sắp hết hạn trong 7 ngày tới nhưng chưa gia hạn hợp đồng mới bằng Subquery NOT EXISTS.</li>
+        <li>Tìm các hội viên có số lượt check-in vượt mức trung bình của toàn phòng tập bằng CTE và Scalar Subquery tính AVG.</li>
+        <li>Kiểm toán phát hiện các lượt đặt chỗ CONFIRMED thuộc về hội viên có thẻ bị khóa hoặc hợp đồng đã hết hạn.</li>
+        <li>Thống kê các thiết bị đang hỏng có end_date IS NULL kèm tổng số lần và tổng giờ bảo trì tích lũy bằng Correlated Subquery.</li>
+        <li>Báo cáo tổng hợp 360 độ hoạt động từng hội viên về chi tiêu thành công, lượt check-in gần nhất và số ca đặt hoặc hủy bằng 3 CTE.</li>
+    </ol>
+    <p><strong>Kiểm thử tự động bằng Transaction Rollback:</strong> Tệp <strong>05_tuan_trigger_tests.sql</strong> gồm 3 test case kiểm thử BR_07, BR_08, BR_09 và tệp <strong>05_thanh_tests.sql</strong> gồm 4 test case kiểm thử BR_03, BR_10, BR_11, BR_16 cùng 3 ca kiểm thử sp_check_in_gym đều chạy trong giao dịch có ROLLBACK để chứng minh Trigger chặn lỗi chính xác mà không làm sai lệch dữ liệu gốc.</p>
+
+    <!-- ===================================================================== -->
+    <!-- PHASE 4                                                               -->
+    <!-- ===================================================================== -->
+    <div class="page-break"></div>
+    <h1 class="phase-heading">GIAI ĐOẠN 4: TÍCH HỢP ỨNG DỤNG WEB VÀ VẬN HÀNH DEMO</h1>
+
+    <h2>4.1. Kiến trúc ứng dụng Web Python Flask kết nối SQL Server</h2>
+    <p>Ở giai đoạn 4, nhóm xây dựng ứng dụng Web tại thư mục <strong>app/tuan_gym_phase4/</strong> bằng ngôn ngữ Python với framework <strong>Flask 3.1.1</strong> và thư viện <strong>pyodbc 5.2.0</strong> kết nối trực tiếp đến cơ sở dữ liệu <strong>gym_management_db</strong> trên Microsoft SQL Server. Chuỗi kết nối được tách ra tệp cấu hình môi trường <strong>.env</strong> hỗ trợ ODBC Driver 17 và 18.</p>
+
+    <h2>4.2. Các chức năng đã triển khai và tương tác trực tiếp với CSDL</h2>
+    <table>
+        <tr>
+            <th style="width: 24%;">Đường dẫn và Màn hình</th>
+            <th style="width: 28%;">Bảng dữ liệu tương tác</th>
+            <th style="width: 48%;">Chức năng và xử lý ràng buộc</th>
+        </tr>
+        <tr>
+            <td><strong>/</strong> — Dashboard</td>
+            <td>session, trainer, room, booking, maintenance_log</td>
+            <td>Truy vấn thời gian thực số ca sắp diễn ra, số lượng huấn luyện viên, phòng tập, lượt đặt CONFIRMED, số thiết bị đang hỏng và bảng 12 ca gần nhất.</td>
+        </tr>
+        <tr>
+            <td><strong>/sessions</strong> và <strong>/sessions/new</strong></td>
+            <td>session, gym_class, trainer, room</td>
+            <td>Hiển thị lịch dạy đầy đủ kèm số chỗ đã đặt; biểu mẫu tạo ca mới bắt trực tiếp ngoại lệ từ Trigger trg_prevent_schedule_conflict và hiển thị thông báo lỗi BR_07, BR_08, BR_09 lên giao diện.</td>
+        </tr>
+        <tr>
+            <td><strong>/bookings</strong></td>
+            <td>booking, session, room, member</td>
+            <td>Đăng ký đặt chỗ với khóa giao dịch UPDLOCK và HOLDLOCK kết hợp Trigger DB kiểm tra điều kiện hợp đồng và sức chứa; hỗ trợ hủy chuyển trạng thái sang CANCELLED.</td>
+        </tr>
+        <tr>
+            <td><strong>/maintenance</strong></td>
+            <td>equipment, maintenance_log</td>
+            <td>Ghi nhận báo hỏng thiết bị với end_date bằng NULL và hoàn tất bảo trì bằng cách cập nhật end_date = GETDATE().</td>
+        </tr>
+    </table>
+
+    <h2>4.3. Hướng dẫn cài đặt, triển khai và vận hành demo</h2>
+    <p style="page-break-after: avoid;"><strong>Bước 1 — Khởi tạo CSDL và cài đặt các đối tượng Phase 3 trên SSMS theo thứ tự:</strong></p>
+    <pre>1. Chạy sql/01_schema_ddl.sql              -- Tạo CSDL gym_management_db, 13 bảng và 7 Indexes
+2. Chạy data/seed_data.sql                 -- Nạp 50 hội viên, 102 lượt check-in và kiểm tra QA
+3. Chạy sql/phase3_tuan/02_tuan_trigger.sql
+4. Chạy sql/phase3_tuan/03_tuan_view.sql
+5. Chạy sql/phase3_thanh/02_thanh_trigger.sql
+6. Chạy sql/phase3_thanh/03_thanh_view_and_proc.sql
+7. Chạy hai tệp 04_*_complex_queries.sql và hai tệp 05_*_tests.sql để xem kết quả truy vấn &amp; test Trigger</pre>
+
+    <p style="page-break-after: avoid;"><strong>Bước 2 — Cài đặt và khởi chạy ứng dụng Web Flask bằng PowerShell tại thư mục app/tuan_gym_phase4:</strong></p>
+    <pre>py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item .env.example .env
+# Mở .env chỉnh DB_CONNECTION_STRING đúng ODBC Driver 17 hoặc 18 và SERVER trên máy
+python app.py
+# Mở trình duyệt tại địa chỉ http://127.0.0.1:5000</pre>
+
+    <h2>4.4. Kết luận</h2>
+    <p>Đồ án đã hoàn thành đầy đủ cả bốn giai đoạn theo đúng kế hoạch 12 tuần: từ phân tích nghiệp vụ và thiết kế mô hình khái niệm 13 thực thể, ánh xạ sang mô hình quan hệ và chứng minh toàn bộ 13 bảng đạt chuẩn BCNF, triển khai vật lý trên Microsoft SQL Server với 7 chỉ mục, 3 Triggers, 3 Views, 1 Stored Procedure, 11 nhóm truy vấn phức tạp và bộ dữ liệu 50 hội viên có kiểm tra toàn vẹn tự động, đến tích hợp thành công ứng dụng Web Python Flask phục vụ kiểm chứng và thuyết trình trực tiếp.</p>
+
+</body>
+</html>
