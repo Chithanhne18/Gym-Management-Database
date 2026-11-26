@@ -1,0 +1,18 @@
+# Python & Virtual Environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables & secrets
+.env
+*.local
+
+# Office temporary & OS files
+~WRL*.tmp
+~$*.docx
+~$*.xlsx
+.DS_Store
+Thumbs.db
+
